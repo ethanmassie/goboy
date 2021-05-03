@@ -3,6 +3,8 @@ package cpu
 import (
 	"encoding/binary"
 	"unsafe"
+
+	"emassie.dev/go-boy/internal/memory"
 )
 
 // dependent on the endianness of the architecture
@@ -34,12 +36,10 @@ func initializeRegisters() {
 	}
 }
 
-var CpuMemory Memory
+var CpuRam memory.Ram
 
 func initializeMemory() {
-	CpuMemory = Memory{
-		ram: make([]byte, 8192),
-	}
+	CpuRam = memory.NewRam(8192)
 }
 
 func Init() {

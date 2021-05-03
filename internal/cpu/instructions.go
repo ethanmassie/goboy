@@ -28,7 +28,7 @@ var CpuInstructions = [256]Instruction{
 		Execute: func(ops ...byte) {
 			bc := CpuRegisters.BC()
 			a := CpuRegisters.A()
-			CpuMemory.WriteByteToAddress(bc, a)
+			CpuRam.WriteByteToAddress(bc, a)
 		},
 	},
 	0x03: {
